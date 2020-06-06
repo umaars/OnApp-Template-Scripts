@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Environment
+     xmlns="http://schemas.dmtf.org/ovf/environment/1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:oe="http://schemas.dmtf.org/ovf/environment/1"
+     xmlns:ve="http://www.vmware.com/schema/ovfenv"
+     oe:id=""
+     ve:vCenterId="vm-83">
+   <PlatformSection>
+      <Kind>VMware ESXi</Kind>
+      <Version>7.0.0</Version>
+      <Vendor>VMware, Inc.</Vendor>
+      <Locale>en</Locale>
+   </PlatformSection>
+   <PropertySection>
+         <Property oe:key="onapp.dns" oe:value="1.1.1.1"/>
+         <Property oe:key="onapp.fqdn" oe:value="test_fqdn"/>
+         <Property oe:key="onapp.gw" oe:value="10.200.1.1"/>
+         <Property oe:key="onapp.ipaddr" oe:value="10.200.1.100"/>
+         <Property oe:key="onapp.netmask" oe:value="255.255.255.0"/>
+   </PropertySection>
+   <ve:EthernetAdapterSection>
+      <ve:Adapter ve:mac="00:50:56:80:6f:c8" ve:network="DPortGroup-Traffic" ve:unitNumber="7"/>
+   </ve:EthernetAdapterSection>
+</Environment>
