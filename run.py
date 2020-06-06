@@ -55,15 +55,15 @@ if os.path.isfile('first-run'):
 else:
     change_hostname(fqdn)
     print("UPDATING Network Config")
-    replacer(f'/etc/sysconfig/network-scripts/{nname}',
+    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'BOOTPROTO', "BOOTPROTO=static")
-    replacer(f'/etc/sysconfig/network-scripts/{nname}',
+    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              "NETMASK=", f"NETMASK={netmask}")
-    replacer(f'/etc/sysconfig/network-scripts/{nname}',
+    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              "IPADDR=", f"IPADDR={ipaddr}")
-    replacer(f'/etc/sysconfig/network-scripts/{nname}',
+    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'GATEWAY=', f"GATEWAY={gw}")
-    replacer(f'/etc/sysconfig/network-scripts/{nname}',
+    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'DNS1=', f"DNS1={dns}")
     print("NEWORK UPDATE")
     subprocess.run(["touch", "first-run"])
