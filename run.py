@@ -37,32 +37,32 @@ print(f"{fqdn} {ipaddr} {netmask} {gw} {dns}")
 
 def change_hostname(hname):
     print(f"Setting new hostname: {hname}")
-    run = subprocess.run(["hostnamectl", "set-hostname",
-                          hname], shell=True, check=True)
+    os.system(f"nmcli general hostname {hname}")
 
 
-def set_net(i, n, g, d):
-    print(f"Setting Network Configs")
-    with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'r') as file:
-        filedata = file.read()
-    print(filedata)
-    filedata = filedata.replace('BOOTPROTO=dhcp', "BOOTPROTO=static")
-    filedata = filedata.replace('IPADDR=10.200.1.100', f'IPADDR={i}')
-    filedata = filedata.replace('NETMASK=255.255.255.0', f'NETMASK={n}')
-    filedata = filedata.replace('GATEWAY=10.200.1.1', f'GATEWAY={g}')
-    filedata = filedata.replace('DNS1=1.1.1.1', f'DNS1={d}')
-
-    with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'w') as file:
-        file.write(filedata)
-
-    return (f" Set : {fqdn} {ipaddr} {netmask} {gw} {dns}")
+def replacer(file, pattern, replace):
+    x = fileinput.input(files=file, inplace=1)
+    for line in x:
+        if pattern in line:
+            line = f"{replace}\n"
+        print(line, end='')
+    x.close()
 
 
 if os.path.isfile('first-run'):
     pass
 else:
     change_hostname(fqdn)
-    set_net(ipaddr, netmask, gw, dns)
+    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+             'BOOTPROTO', "BOOTPROTO=static")
+    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+             "NETMASK=", f"NETMASK={netmask}")
+    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+             "IPADDR=", f"IPADDR={ipaddr}")
+    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+             'GATEWAY=', f"GATEWAY={gw}")
+    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+             'DNS1=', f"DNS1={dns}")
     subprocess.run(["touch", "first-run"])
     time.sleep(10)
     os.system("rm -rf sample.xm")
