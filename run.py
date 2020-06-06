@@ -1,4 +1,4 @@
-from os import path
+import os
 import subprocess
 from xml.dom import minidom
 import fileinput
@@ -6,11 +6,7 @@ import re
 import time
 
 
-if path.exists("sample.xml"):
-    print("True")
-else:
-    print("false")
-
+os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > sample.xml')
 xmldoc = minidom.parse('sample.xml')
 itemlist = xmldoc.getElementsByTagName('Property')
 
@@ -46,6 +42,7 @@ def change_hostname(hname):
 
 
 def set_net(i, n, g, d):
+    print(f"Setting Network Configs")
     with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'r') as file:
         filedata = file.read()
     print(filedata)
@@ -55,8 +52,10 @@ def set_net(i, n, g, d):
     filedata = filedata.replace('GATEWAY=172.0.0.1', f'GATEWAY={g}')
     filedata = filedata.replace('DNS1=172.100.12.1', f'DNS1={d}')
 
-    with open('net-script.bak', 'w') as file:
+    with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'w') as file:
         file.write(filedata)
+
+    return (f" Set : {fqdn} {ipaddr} {netmask} {gw} {dns}")
 
 
 if os.path.isfile('first-run'):
@@ -66,4 +65,5 @@ else:
     set_net(ipaddr, netmask, gw, dns)
     subprocess.run(["touch", "first-run"])
     time.sleep(10)
-    # lsos.system("shutdown -r now")
+    os.system("rm -rf sample.xm")
+    os.system("shutdown -r now")
