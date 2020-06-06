@@ -3,6 +3,7 @@ import subprocess
 from xml.dom import minidom
 import fileinput
 import re
+import time
 
 
 if path.exists("sample.xml"):
@@ -57,5 +58,11 @@ def set_net(i, n, g, d):
         file.write(filedata)
 
 
-change_hostname(fqdn)
-set_net(ipaddr, netmask, gw, dns)
+if os.path.isfile('first-run'):
+    pass
+else:
+    change_hostname(fqdn)
+    set_net(ipaddr, netmask, gw, dns)
+    subprocess.run(["touch", "first-run"])
+    time.sleep(10)
+    # os.system("shutdown -r now")
