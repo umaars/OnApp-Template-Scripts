@@ -53,6 +53,7 @@ if os.path.isfile('first-run'):
     pass
 else:
     change_hostname(fqdn)
+    print("UPDATING Network Config")
     replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
              'BOOTPROTO', "BOOTPROTO=static")
     replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
@@ -63,7 +64,10 @@ else:
              'GATEWAY=', f"GATEWAY={gw}")
     replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
              'DNS1=', f"DNS1={dns}")
+    print("NEWORK UPDATE")
     subprocess.run(["touch", "first-run"])
     time.sleep(10)
+    print("Sleeping Before Reboot")
     os.system("rm -rf sample.xm")
+    print("Rebooting NOw")
     os.system("shutdown -r now")
