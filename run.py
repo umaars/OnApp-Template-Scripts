@@ -47,10 +47,10 @@ def set_net(i, n, g, d):
         filedata = file.read()
     print(filedata)
     filedata = filedata.replace('BOOTPROTO=dhcp', "BOOTPROTO=static")
-    filedata = filedata.replace('IPADDR=172.100.12.1', f'IPADDR={i}')
+    filedata = filedata.replace('IPADDR=10.200.1.100', f'IPADDR={i}')
     filedata = filedata.replace('NETMASK=255.255.255.0', f'NETMASK={n}')
-    filedata = filedata.replace('GATEWAY=172.0.0.1', f'GATEWAY={g}')
-    filedata = filedata.replace('DNS1=172.100.12.1', f'DNS1={d}')
+    filedata = filedata.replace('GATEWAY=10.200.1.1', f'GATEWAY={g}')
+    filedata = filedata.replace('DNS1=1.1.1.1', f'DNS1={d}')
 
     with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'w') as file:
         file.write(filedata)
