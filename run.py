@@ -49,20 +49,21 @@ def replacer(file, pattern, replace):
     x.close()
 
 
+nname = "ens192"
 if os.path.isfile('first-run'):
     pass
 else:
     change_hostname(fqdn)
     print("UPDATING Network Config")
-    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+    replacer(f'/etc/sysconfig/network-scripts/{nname}',
              'BOOTPROTO', "BOOTPROTO=static")
-    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+    replacer(f'/etc/sysconfig/network-scripts/{nname}',
              "NETMASK=", f"NETMASK={netmask}")
-    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+    replacer(f'/etc/sysconfig/network-scripts/{nname}',
              "IPADDR=", f"IPADDR={ipaddr}")
-    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+    replacer(f'/etc/sysconfig/network-scripts/{nname}',
              'GATEWAY=', f"GATEWAY={gw}")
-    replacer('/etc/sysconfig/network-scripts/ifcfg-ens192',
+    replacer(f'/etc/sysconfig/network-scripts/{nname}',
              'DNS1=', f"DNS1={dns}")
     print("NEWORK UPDATE")
     subprocess.run(["touch", "first-run"])
