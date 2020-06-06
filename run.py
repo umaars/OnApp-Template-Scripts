@@ -31,7 +31,6 @@ for i in itemlist:
     if key == 'onapp.netmask':
         netmask = value
 
-nname = "ens192"
 print(f"{fqdn} {ipaddr} {netmask} {gw} {dns}")
 
 
