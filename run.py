@@ -46,9 +46,10 @@ def change_hostname(hname):
 
 
 def set_net(i, n, g, d):
-    with open('net-script.bak', 'r') as file:
+    with open('/etc/sysconfig/network-scripts/ifcfg-ens192', 'r') as file:
         filedata = file.read()
     print(filedata)
+    filedata = filedata.replace('BOOTPROTO=dhcp', "BOOTPROTO=static")
     filedata = filedata.replace('IPADDR=172.100.12.1', f'IPADDR={i}')
     filedata = filedata.replace('NETMASK=255.255.255.0', f'NETMASK={n}')
     filedata = filedata.replace('GATEWAY=172.0.0.1', f'GATEWAY={g}')
@@ -65,4 +66,4 @@ else:
     set_net(ipaddr, netmask, gw, dns)
     subprocess.run(["touch", "first-run"])
     time.sleep(10)
-    # os.system("shutdown -r now")
+    # lsos.system("shutdown -r now")
