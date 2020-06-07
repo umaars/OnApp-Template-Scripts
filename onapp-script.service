@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c "/usr/bin/python3 /root/scripts/OnApp-Template-Scripts/run.py"
+ExecStart=/usr/bin/python3 /root/scripts/OnApp-Template-Scripts/run.py
 
 [Install]
 WantedBy=multi-user.target
