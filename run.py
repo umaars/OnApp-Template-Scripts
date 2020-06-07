@@ -55,7 +55,7 @@ if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
     quit()
 else:
     logging.info(f"changing hostname to {PROPERTIES['onapp.fqdn']}")
-    change_hostname({PROPERTIES['onapp.fqdn']})
+    change_hostname(PROPERTIES['onapp.fqdn'])
     print("UPDATING Network Config")
     logging.info(
         f"Setting IP: {PROPERTIES['onapp.ipaddr']}, Subnet Mask: {PROPERTIES['onapp.netmask']}, Gateway: {PROPERTIES['onapp.gw']}, DNS: {PROPERTIES['onapp.dns']}")
