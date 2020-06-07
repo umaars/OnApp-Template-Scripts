@@ -6,8 +6,8 @@ import re
 import time
 
 
-os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > sample.xml')
-xmldoc = minidom.parse('sample.xml')
+os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > /root/scripts/OnApp-Template-Scripts/sample.xml')
+xmldoc = minidom.parse('/root/scripts/OnApp-Template-Scripts/sample.xml')
 itemlist = xmldoc.getElementsByTagName('Property')
 
 fqdn = ''
@@ -48,8 +48,8 @@ def replacer(file, pattern, replace):
     x.close()
 
 
-nname = "ens192"
-if os.path.isfile('first-run'):
+nname = "ens160"
+if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
     pass
 else:
     change_hostname(fqdn)
@@ -64,10 +64,10 @@ else:
              'GATEWAY=', f"GATEWAY={gw}")
     replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'DNS1=', f"DNS1={dns}")
-    print("NEWORK UPDATE")
-    subprocess.run(["touch", "first-run"])
+    print("NEWORK UPDATED")
+    subprocess.run(["touch", "/root/scripts/OnApp-Template-Scripts/first-run"])
     time.sleep(10)
     print("Sleeping Before Reboot")
-    os.system("rm -rf sample.xm")
-    print("Rebooting NOw")
+    os.system("rm -rf /root/scripts/OnApp-Template-Scripts/sample.xml")
+    print("Rebooting Now!!!!")
     os.system("shutdown -r now")

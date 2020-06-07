@@ -1,6 +1,6 @@
 [Unit]
 Description=OnApp Configurator
-After=multi-user.target
+After=network-online.target
 Conflicts=getty@tty1.service
 
 [Service]
