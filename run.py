@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import os
 import subprocess
 from xml.dom import minidom
@@ -58,6 +60,7 @@ def replacer(file, pattern, replace):
 nname = "ens160"
 if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
     logging.info("first-run exists. Exiting!")
+    quit()
 else:
     logging.info(f"changing hostname to {fqdn}")
     change_hostname(fqdn)
