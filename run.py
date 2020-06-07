@@ -17,31 +17,20 @@ os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > /root/scripts/OnApp-Temp
 xmldoc = minidom.parse('/root/scripts/OnApp-Template-Scripts/sample.xml')
 itemlist = xmldoc.getElementsByTagName('Property')
 
-fqdn = ''
-ipaddr = ''
-netmask = ''
-gw = ''
-dns = ''
 
+PROPERTIES = {}
 for i in itemlist:
-    a = {}
+
     key = i.attributes['oe:key'].value
     value = i.attributes['oe:value'].value
-    if key == 'onapp.gw':
-        gw = value
-    if key == 'onapp.fqdn':
-        fqdn = value
-    if key == 'onapp.ipaddr':
-        ipaddr = value
-    if key == 'onapp.dns':
-        dns = value
-    if key == 'onapp.netmask':
-        netmask = value
+    PROPERTIES[key] = value
 
-print(f"{fqdn} {ipaddr} {netmask} {gw} {dns}")
 
-patterns = {'BOOTPROTO': "BOOTPROTO=static", "NETMASK=": f"NETMASK={netmask}",
-            "IPADDR=": f"IPADDR={ipaddr}", 'GATEWAY=': f"GATEWAY={gw}", 'DNS1=': f'DNS1={dns}', }
+print(PROPERTIES)
+
+patterns = {'BOOTPROTO': "BOOTPROTO=static", "NETMASK=": f"NETMASK={PROPERTIES['onapp.netmask']}",
+            "IPADDR=": f"IPADDR={PROPERTIES['onapp.ipaddr']}", 'GATEWAY=': f"GATEWAY={PROPERTIES['onapp.gw']}", 'DNS1=': f'DNS1={PROPERTIES["onapp.dns"]}', }
+print(patterns)
 
 
 def change_hostname(hname):
