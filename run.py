@@ -54,11 +54,11 @@ if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
     logging.info("first-run exists. Exiting!")
     quit()
 else:
-    logging.info(f"changing hostname to {fqdn}")
-    change_hostname(fqdn)
+    logging.info(f"changing hostname to {PROPERTIES['onapp.fqdn']}")
+    change_hostname({PROPERTIES['onapp.fqdn']})
     print("UPDATING Network Config")
     logging.info(
-        f"Setting IP: {ipaddr}, Subnet Mask: {netmask}, Gateway: {gw}, DNS: {dns}")
+        f"Setting IP: {PROPERTIES['onapp.ipaddr']}, Subnet Mask: {PROPERTIES['onapp.netmask']}, Gateway: {PROPERTIES['onapp.gw']}, DNS: {PROPERTIES['onapp.dns']}")
     logging.info("UPDATING Network Config")
     for line in fileinput.input(files=(nname), inplace=1):
         line = replace(patterns, line)
