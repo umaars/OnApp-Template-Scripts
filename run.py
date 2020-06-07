@@ -4,6 +4,13 @@ from xml.dom import minidom
 import fileinput
 import re
 import time
+import logging
+
+logging.basicConfig(filename='/root/scripts/OnApp-Template-Scripts/log.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
 
 
 os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > /root/scripts/OnApp-Template-Scripts/sample.xml')
@@ -50,10 +57,14 @@ def replacer(file, pattern, replace):
 
 nname = "ens160"
 if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
-    pass
+    logging.info("first-run exists. Exiting!")
 else:
+    logging.info(f"changing hostname to {fqdn}")
     change_hostname(fqdn)
-    print("UPDATING Network Config")
+    # print("UPDATING Network Config")
+    logging.info(
+        f"Setting IP: {ipaddr}, Subnet Mask: {netmask}, Gateway: {gw}, DNS: {dns}")
+    logging.info("UPDATING Network Config")
     replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'BOOTPROTO', "BOOTPROTO=static")
     replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
@@ -64,10 +75,11 @@ else:
              'GATEWAY=', f"GATEWAY={gw}")
     replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'DNS1=', f"DNS1={dns}")
-    print("NEWORK UPDATED")
+    # print("NEWORK UPDATED")
+    logging.info("Network config updated")
     subprocess.run(["touch", "/root/scripts/OnApp-Template-Scripts/first-run"])
     time.sleep(10)
-    print("Sleeping Before Reboot")
+    logging.info("Sleeping Before Reboot")
     os.system("rm -rf /root/scripts/OnApp-Template-Scripts/sample.xml")
-    print("Rebooting Now!!!!")
+    # print("Rebooting Now!!!!")
     os.system("shutdown -r now")
