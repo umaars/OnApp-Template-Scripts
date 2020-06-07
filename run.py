@@ -40,22 +40,27 @@ for i in itemlist:
 
 print(f"{fqdn} {ipaddr} {netmask} {gw} {dns}")
 
+patterns = {'BOOTPROTO': "BOOTPROTO=static", "NETMASK=": f"NETMASK={netmask}",
+            "IPADDR=": f"IPADDR={ipaddr}", 'GATEWAY=': f"GATEWAY={gw}", 'DNS1=': f'DNS1={dns}', }
+
 
 def change_hostname(hname):
     print(f"Setting new hostname: {hname}")
     os.system(f"nmcli general hostname {hname}")
 
 
-def replacer(file, pattern, replace):
-    x = fileinput.input(files=file, inplace=1)
-    for line in x:
-        if pattern in line:
-            line = f"{replace}\n"
-        print(line, end='')
-    x.close()
+def replace(mydict, line):
+    mylist = list(mydict.keys())
+    for each in mylist:
+        if each in line:
+            line = f"{mydict[each]}\n"
+        else:
+            line = line
+    return line
 
 
-nname = "ens160"
+nname = "/etc/sysconfig/network-scripts/ifcfg-ens160"
+
 if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
     logging.info("first-run exists. Exiting!")
     quit()
@@ -66,16 +71,10 @@ else:
     logging.info(
         f"Setting IP: {ipaddr}, Subnet Mask: {netmask}, Gateway: {gw}, DNS: {dns}")
     logging.info("UPDATING Network Config")
-    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
-             'BOOTPROTO', "BOOTPROTO=static")
-    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
-             "NETMASK=", f"NETMASK={netmask}")
-    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
-             "IPADDR=", f"IPADDR={ipaddr}")
-    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
-             'GATEWAY=', f"GATEWAY={gw}")
-    replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
-             'DNS1=', f"DNS1={dns}")
+    for line in fileinput.input(files=(nname), inplace=1):
+        line = replace(patterns, line)
+        print(line, end='')
+
     print("NEWORK UPDATED")
     logging.info("Network config updated")
     subprocess.run(["touch", "/root/scripts/OnApp-Template-Scripts/first-run"])
