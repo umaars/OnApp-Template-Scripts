@@ -1,5 +1,3 @@
-#!/bin/python3
-
 import os
 import subprocess
 from xml.dom import minidom
@@ -64,7 +62,7 @@ if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
 else:
     logging.info(f"changing hostname to {fqdn}")
     change_hostname(fqdn)
-    # print("UPDATING Network Config")
+    print("UPDATING Network Config")
     logging.info(
         f"Setting IP: {ipaddr}, Subnet Mask: {netmask}, Gateway: {gw}, DNS: {dns}")
     logging.info("UPDATING Network Config")
@@ -78,7 +76,7 @@ else:
              'GATEWAY=', f"GATEWAY={gw}")
     replacer(f'/etc/sysconfig/network-scripts/ifcfg-{nname}',
              'DNS1=', f"DNS1={dns}")
-    # print("NEWORK UPDATED")
+    print("NEWORK UPDATED")
     logging.info("Network config updated")
     subprocess.run(["touch", "/root/scripts/OnApp-Template-Scripts/first-run"])
     time.sleep(10)
