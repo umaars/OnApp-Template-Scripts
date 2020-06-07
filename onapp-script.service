@@ -5,7 +5,7 @@ Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /root/scripts/OnApp-Template-Scripts/run.py >> /root/scripts/OnApp-Template-Scripts/log.txt
+ExecStart=/usr/bin/python3 /root/scripts/OnApp-Template-Scripts/run.py
 StandardInput=tty-force
 
 [Install]
