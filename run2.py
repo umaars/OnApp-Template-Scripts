@@ -1,6 +1,8 @@
 from xml.dom import minidom
 import os
 import subprocess
+import fileinput
+
 
 def xmlparser():
     '''
@@ -20,9 +22,10 @@ def xmlparser():
     return PROPERTIES
 
 
-ovf_options = xmlparser()
+nname = "/etc/sysconfig/network-scripts/ifcfg-ens160"
 
-def changeNetworkOptions(data_dict):
+
+def changeNetworkOptions(data_dict, nname):
     my_pattern = {
         'BOOTPROTO': "BOOTPROTO=static",
         "NETMASK=": f"NETMASK={data_dict['onapp.netmask']}",
@@ -30,6 +33,15 @@ def changeNetworkOptions(data_dict):
         'GATEWAY=': f"GATEWAY={data_dict['onapp.gw']}",
         'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
     }
+    for line in fileinput(files=(nname), inplace=1):
+        mylist = list(my_pattern.keys())
+        for each in mylist:
+            if each in line:
+                line = f"{my_pattern[each]}\n"
+            else:
+                line = line
+        return line
 
 
+ovf_options = xmlparser()
 print(xmlparser())
