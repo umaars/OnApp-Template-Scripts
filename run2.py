@@ -45,3 +45,4 @@ def changeNetworkOptions(data_dict, nname):
 
 ovf_options = xmlparser()
 print(xmlparser())
+changeNetworkOptions(ovf_options, nname)
