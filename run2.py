@@ -21,7 +21,8 @@ def xmlparser():
         PROPERTIES[key] = value
     return PROPERTIES
 
-def changer(patterns_dict, file_to_change):
+
+def changer(file_to_change):
     """Function to update files in place
 
     Arguments:
@@ -29,17 +30,25 @@ def changer(patterns_dict, file_to_change):
         file_to_change {Filename} -- Filename to make changes
         Does not output anything , changes are made inside the file
     """
-    mylist = list(patterns_dict.keys())
+    
+    my_pattern = {
+        'BOOTPROTO': "BOOTPROTO=static",
+        "NETMASK=": f"NETMASK={properties['onapp.netmask']}",
+        "IPADDR=": f"IPADDR={properties['onapp.ipaddr']}",
+        'GATEWAY=': f"GATEWAY={properties['onapp.gw']}",
+        'DNS1=': f'DNS1={properties["onapp.dns"]}',
+    }
+    mylist = list(my_pattern.keys())
     for line in fileinput.input(files=(file_to_change), inplace=1):
         for each in mylist:
             if each in line:
-                line = f"{patterns_dict[each]}\n"
+                line = f"{my_pattern[each]}\n"
             else:
-                line=line
+                line = line
         print(line, end='')
 
 
-#Sample Dictionary to change values in Centos 7 network scripts file for interface ens160
+# Sample Dictionary to change values in Centos 7 network scripts file for interface ens160
 # "/etc/sysconfig/network-scripts/ifcfg-ens160"
 #    my_pattern = {
 #     'BOOTPROTO': "BOOTPROTO=static",
@@ -48,3 +57,8 @@ def changer(patterns_dict, file_to_change):
 #     'GATEWAY=': f"GATEWAY={data_dict['onapp.gw']}",
 #     'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
 # }
+
+properties = xmlparser()
+changer("net-script.bak")
+
+
