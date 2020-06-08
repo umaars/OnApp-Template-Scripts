@@ -2,6 +2,7 @@ from xml.dom import minidom
 import os
 import subprocess
 import fileinput
+import shlex
 
 
 def xmlparser():
@@ -30,7 +31,7 @@ def changer(file_to_change):
         file_to_change {Filename} -- Filename to make changes
         Does not output anything , changes are made inside the file
     """
-    
+
     my_pattern = {
         'BOOTPROTO': "BOOTPROTO=static",
         "NETMASK=": f"NETMASK={properties['onapp.netmask']}",
@@ -59,6 +60,8 @@ def changer(file_to_change):
 # }
 
 properties = xmlparser()
-changer("net-script.bak")
+changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
 
+command = f"/onapp/onapp-cp-install/onapp-cp-install.sh --quick -a -i {properties['onapp.ipaddr']}"
 
+os.system(command)
