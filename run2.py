@@ -6,7 +6,7 @@ import fileinput
 
 def xmlparser():
     '''
-    Parses a vmware tools XML file and returns all properties
+    Parses a vmware tools XML file and returns all properties in a dictionary
     '''
     with open('sample.xml', 'w') as f:
         p1 = subprocess.run(
@@ -21,28 +21,30 @@ def xmlparser():
         PROPERTIES[key] = value
     return PROPERTIES
 
+def changer(patterns_dict, file_to_change):
+    """Function to update files in place
 
-nname = "/etc/sysconfig/network-scripts/ifcfg-ens160"
-
-
-def changeNetworkOptions(data_dict, nname):
-    my_pattern = {
-        'BOOTPROTO': "BOOTPROTO=static",
-        "NETMASK=": f"NETMASK={data_dict['onapp.netmask']}",
-        "IPADDR=": f"IPADDR={data_dict['onapp.ipaddr']}",
-        'GATEWAY=': f"GATEWAY={data_dict['onapp.gw']}",
-        'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
-    }
-    for line in fileinput(files=(nname), inplace=1):
-        mylist = list(my_pattern.keys())
+    Arguments:
+        patterns_dict {Dictionary} -- Dictionary where key = lookup line string and value = new line value
+        file_to_change {Filename} -- Filename to make changes
+        Does not output anything , changes are made inside the file
+    """
+    mylist = list(patterns_dict.keys())
+    for line in fileinput.input(files=(file_to_change), inplace=1):
         for each in mylist:
             if each in line:
-                line = f"{my_pattern[each]}\n"
+                line = f"{patterns_dict[each]}\n"
             else:
-                line = line
-        return line
+                line=line
+        print(line, end='')
 
 
-ovf_options = xmlparser()
-print(xmlparser())
-changeNetworkOptions(ovf_options, nname)
+#Sample Dictionary to change values in Centos 7 network scripts file for interface ens160
+# "/etc/sysconfig/network-scripts/ifcfg-ens160"
+#    my_pattern = {
+#     'BOOTPROTO': "BOOTPROTO=static",
+#     "NETMASK=": f"NETMASK={data_dict['onapp.netmask']}",
+#     "IPADDR=": f"IPADDR={data_dict['onapp.ipaddr']}",
+#     'GATEWAY=': f"GATEWAY={data_dict['onapp.gw']}",
+#     'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
+# }
