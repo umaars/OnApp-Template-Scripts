@@ -5,6 +5,7 @@ import os
 import subprocess
 import fileinput
 import shlex
+import time
 
 
 def xmlparser():
@@ -63,8 +64,13 @@ def changer(file_to_change):
 
 print("Parsing OVF Properties")
 properties = xmlparser()
+time.sleep(2)
 print("Changing Hostname")
 changeHostname = os.system(
     f"nmcli general hostname {properties['onapp.fqdn']}")
+time.sleep(2)
 print("Updating Network Settings")
 changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
+time.sleep(2)
+print("Restarting Network")
+os.system("systemctl restart network")
