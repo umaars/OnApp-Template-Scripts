@@ -1,10 +1,20 @@
 [Unit]
-Description=OnApp Configurator
-After=network-online.target
+Description=Run OnApp Configuration
+After=systemd-user-sessions.service plymouth-quit-wait.service getty-pre.target
+After=rc-local.service
+
+Before=getty.target
+IgnoreOnIsolate=yes
+
+# On systems without virtual consoles, don't start any getty. Note
+# that serial gettys are covered by serial-getty@.service, not this
+# unit.
+ConditionPathExists=/dev/tty0
 
 [Service]
-Type=oneshot
-ExecStart=/usr/bin/python3 /root/scripts/OnApp-Template-Scripts/run.py
+ExecStart=/root/OnApp-Template-Scripts/run.py
+Type=idle
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=getty.target
+DefaultInstance=tty1
