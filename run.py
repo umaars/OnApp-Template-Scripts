@@ -80,4 +80,7 @@ else:
     print("Restarting Network")
     os.system("systemctl restart network")
     time.sleep(2)
+    p1 = subprocess.Popen(
+        ['/onapp/onapp-cp-install/onapp-cp-install.sh --quick -a'])
+    exit_code = p1.wait()
     os.system("systemctl reboot")
