@@ -82,9 +82,12 @@ else:
     print("Restarting Network")
     os.system("systemctl restart network")
     time.sleep(2)
-    p1 = subprocess.run('yum -y update onapp-cp-install',
-                        capture_output=True, shell=True, Text=True)
-    exit_code = p1.wait
+    cmd = "yum -y update onapp-cp-install"
+    newcmd = shlex.split(cmd)
+
+    p1 = subprocess.run(newcmd, stdout=subprocess.PIPE, text=True)
+    print(p1.stdout)
+
     os.system('echo "`date` RUN" >> /root/first-run')
     os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
     os.system("systemctl reboot")
