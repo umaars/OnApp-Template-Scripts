@@ -84,5 +84,6 @@ else:
     time.sleep(2)
     os.system('echo "`date` RUN" >> /root/first-run')
     os.system('echo "`date` RUN" | tee /dev/kmsg')
+    p1 = subprocess.run('yum -y update onapp-cp-install', shell=True)
     exit_code = p1.wait()
     os.system("systemctl reboot")
