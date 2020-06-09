@@ -65,7 +65,7 @@ def changer(file_to_change):
 
 if os.path.isfile('/root/first-run'):
     os.system('echo "`date` Not RUN" >> /root/first-run')
-    os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
+    os.system('echo "`date` ONAPP TEMPLATE SCRIPT FAILED" | tee /dev/kmsg')
     print("first-run exists. Exiting!")
 else:
     print("Parsing OVF Properties")
