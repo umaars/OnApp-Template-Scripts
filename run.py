@@ -62,15 +62,20 @@ def changer(file_to_change):
 #     'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
 # }
 
-print("Parsing OVF Properties")
-properties = xmlparser()
-time.sleep(2)
-print("Changing Hostname")
-changeHostname = os.system(
-    f"nmcli general hostname {properties['onapp.fqdn']}")
-time.sleep(2)
-print("Updating Network Settings")
-changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
-time.sleep(2)
-print("Restarting Network")
-os.system("systemctl restart network")
+
+if os.path.isfile('/root/first-run'):
+    print("first-run exists. Exiting!")
+else:
+    print("Parsing OVF Properties")
+    properties = xmlparser()
+    time.sleep(2)
+    print("Changing Hostname")
+    changeHostname = os.system(
+        f"nmcli general hostname {properties['onapp.fqdn']}")
+    time.sleep(2)
+    print("Updating Network Settings")
+    changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
+    time.sleep(2)
+    os.system("touch /root/first-run")
+    print("Restarting Network")
+    os.system("systemctl restart network")
