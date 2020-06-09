@@ -1,74 +1,70 @@
+#!/usr/bin/env python3
+
+from xml.dom import minidom
 import os
 import subprocess
-from xml.dom import minidom
 import fileinput
-import re
-import time
-import logging
-
-logging.basicConfig(filename='/root/scripts/OnApp-Template-Scripts/log.txt',
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.DEBUG)
+import shlex
 
 
-os.system('vmtoolsd --cmd "info-get guestinfo.ovfEnv" > /root/scripts/OnApp-Template-Scripts/sample.xml')
-xmldoc = minidom.parse('/root/scripts/OnApp-Template-Scripts/sample.xml')
-itemlist = xmldoc.getElementsByTagName('Property')
+def xmlparser():
+    '''
+    Parses a vmware tools XML file and returns all properties in a dictionary
+    '''
+    with open('sample.xml', 'w') as f:
+        p1 = subprocess.run(
+            'vmtoolsd --cmd "info-get guestinfo.ovfEnv" >> sample.xml', stdout=f, shell=True)
+        f.close()
+    PROPERTIES = {}
+    p = minidom.parse('sample.xml')
+    item_list = p.getElementsByTagName('Property')
+    for i in item_list:
+        key = i.attributes['oe:key'].value
+        value = i.attributes['oe:value'].value
+        PROPERTIES[key] = value
+    return PROPERTIES
 
 
-PROPERTIES = {}
-for i in itemlist:
+def changer(file_to_change):
+    """Function to update files in place
 
-    key = i.attributes['oe:key'].value
-    value = i.attributes['oe:value'].value
-    PROPERTIES[key] = value
+    Arguments:
+        patterns_dict {Dictionary} -- Dictionary where key = lookup line string and value = new line value
+        file_to_change {Filename} -- Filename to make changes
+        Does not output anything , changes are made inside the file
+    """
 
-
-print(PROPERTIES)
-
-patterns = {'BOOTPROTO': "BOOTPROTO=static", "NETMASK=": f"NETMASK={PROPERTIES['onapp.netmask']}",
-            "IPADDR=": f"IPADDR={PROPERTIES['onapp.ipaddr']}", 'GATEWAY=': f"GATEWAY={PROPERTIES['onapp.gw']}", 'DNS1=': f'DNS1={PROPERTIES["onapp.dns"]}', }
-print(patterns)
-
-
-def change_hostname(hname):
-    print(f"Setting new hostname: {hname}")
-    os.system(f"nmcli general hostname {hname}")
-
-
-def replace(mydict, line):
-    mylist = list(mydict.keys())
-    for each in mylist:
-        if each in line:
-            line = f"{mydict[each]}\n"
-        else:
-            line = line
-    return line
-
-
-nname = "/etc/sysconfig/network-scripts/ifcfg-ens160"
-
-if os.path.isfile('/root/scripts/OnApp-Template-Scripts/first-run'):
-    logging.info("first-run exists. Exiting!")
-    quit()
-else:
-    logging.info(f"changing hostname to {PROPERTIES['onapp.fqdn']}")
-    change_hostname(PROPERTIES['onapp.fqdn'])
-    print("UPDATING Network Config")
-    logging.info(
-        f"Setting IP: {PROPERTIES['onapp.ipaddr']}, Subnet Mask: {PROPERTIES['onapp.netmask']}, Gateway: {PROPERTIES['onapp.gw']}, DNS: {PROPERTIES['onapp.dns']}")
-    logging.info("UPDATING Network Config")
-    for line in fileinput.input(files=(nname), inplace=1):
-        line = replace(patterns, line)
+    my_pattern = {
+        'BOOTPROTO': "BOOTPROTO=static",
+        "NETMASK=": f"NETMASK={properties['onapp.netmask']}",
+        "IPADDR=": f"IPADDR={properties['onapp.ipaddr']}",
+        'GATEWAY=': f"GATEWAY={properties['onapp.gw']}",
+        'DNS1=': f'DNS1={properties["onapp.dns"]}',
+    }
+    mylist = list(my_pattern.keys())
+    for line in fileinput.input(files=(file_to_change), inplace=1):
+        for each in mylist:
+            if each in line:
+                line = f"{my_pattern[each]}\n"
+            else:
+                line = line
         print(line, end='')
 
-    print("NEWORK UPDATED")
-    logging.info("Network config updated")
-    subprocess.run(["touch", "/root/scripts/OnApp-Template-Scripts/first-run"])
-    time.sleep(10)
-    logging.info("Sleeping Before Reboot")
-    os.system("rm -rf /root/scripts/OnApp-Template-Scripts/sample.xml")
-    # print("Rebooting Now!!!!")
-    os.system("shutdown -r now")
+
+# Sample Dictionary to change values in Centos 7 network scripts file for interface ens160
+# "/etc/sysconfig/network-scripts/ifcfg-ens160"
+#    my_pattern = {
+#     'BOOTPROTO': "BOOTPROTO=static",
+#     "NETMASK=": f"NETMASK={data_dict['onapp.netmask']}",
+#     "IPADDR=": f"IPADDR={data_dict['onapp.ipaddr']}",
+#     'GATEWAY=': f"GATEWAY={data_dict['onapp.gw']}",
+#     'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
+# }
+
+print("Parsing OVF Properties")
+properties = xmlparser()
+print("Changing Hostname")
+changeHostname = os.system(
+    f"nmcli general hostname {properties['onapp.fqdn']}")
+print("Updating Network Settings")
+changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
