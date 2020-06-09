@@ -85,9 +85,9 @@ else:
     cmd = "yum -y update onapp-cp-install"
     newcmd = shlex.split(cmd)
 
-    p1 = subprocess.run(newcmd, stdout=subprocess.PIPE, text=True)
+    p1 = subprocess.run(newcmd, stdout=subprocess.PIPE, universal_newlines=True)
     print(p1.stdout)
 
     os.system('echo "`date` RUN" >> /root/first-run')
     os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
-    os.system("systemctl reboot")
+    # os.system("systemctl reboot")
