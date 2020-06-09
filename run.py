@@ -65,7 +65,7 @@ def changer(file_to_change):
 
 if os.path.isfile('/root/first-run'):
     os.system('echo "`date` Not RUN" >> /root/first-run')
-    os.system('echo "`date` Not RUN" | tee /dev/kmsg')
+    os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
     print("first-run exists. Exiting!")
 else:
     print("Parsing OVF Properties")
@@ -82,8 +82,8 @@ else:
     print("Restarting Network")
     os.system("systemctl restart network")
     time.sleep(2)
-    os.system('echo "`date` RUN" >> /root/first-run')
-    os.system('echo "`date` RUN" | tee /dev/kmsg')
     p1 = subprocess.run('yum -y update onapp-cp-install', shell=True)
     exit_code = p1.wait()
+    os.system('echo "`date` RUN" >> /root/first-run')
+    os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
     os.system("systemctl reboot")
