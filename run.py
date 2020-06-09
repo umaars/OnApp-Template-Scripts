@@ -79,3 +79,5 @@ else:
     os.system("touch /root/first-run")
     print("Restarting Network")
     os.system("systemctl restart network")
+    time.sleep(2)
+    os.system("systemctl reboot")
