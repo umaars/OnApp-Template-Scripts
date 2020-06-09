@@ -61,9 +61,10 @@ def changer(file_to_change):
 #     'DNS1=': f'DNS1={data_dict["onapp.dns"]}',
 # }
 
+print("Parsing OVF Properties")
 properties = xmlparser()
+print("Changing Hostname")
+changeHostname = os.system(
+    f"nmcli general hostname {properties['onapp.fqdn']}")
+print("Updating Network Settings")
 changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
-
-command = f"/onapp/onapp-cp-install/onapp-cp-install.sh --quick -a -i {properties['onapp.ipaddr']}"
-
-os.system(command)
