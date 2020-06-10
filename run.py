@@ -74,30 +74,47 @@ def changer(props,file_to_change):
         print(line, end='')
 
 
-properties = xmlparser()
-print(properties)
-logging.info(properties)
-net_props = createNetworkProps(properties)
-logging.info(net_props)
-onapp_props = createOnAppProps(properties)
-logging.info(onapp_props)
 
-logging.info(f"Setting hostname to {properties['onapp.fqdn']} ")
-hname_cmd = f"hostnamectl set-hostname {properties['onapp.fqdn']}"
-hname_cmd = shlex.split(hname_cmd)
-print(hname_cmd)
-hname_set = subprocess.Popen(hname_cmd)
-hname_set.wait()
-print("finished")
-os.system(f"export HOSTNAME={properties['onapp.fqdn']}")
-print(f"export HOSTNAME={properties['onapp.fqdn']}")
-time.sleep(1)
-os.system("service rabbitmq-server restart")
-rabbitmq_cmd = shlex.split("/onapp/onapp-rabbitmq/onapp-cp-rabbitmq.sh")
-reinstall_rabbitmq = subprocess.Popen(rabbitmq_cmd,shell=True)
-reinstall_rabbitmq.wait()
-print("reinstalled_rabbitmq")
+first_run = "first-run"
+second_run = "second_run"
 
+if os.path.isfile(first_run) and os.path.isfile(second_run):
+    print("Already Ran")
+
+if os.path.isfile(first_run) and not os.path.isfile(second_run):
+    rabbitmq_cmd = shlex.split("/onapp/onapp-rabbitmq/onapp-cp-rabbitmq.sh")
+    reinstall_rabbitmq = subprocess.Popen(rabbitmq_cmd,shell=True)
+    reinstall_rabbitmq.wait()
+    print("reinstalled_rabbitmq")
+    os.system('touch second_run')
+
+
+if not os.path.isfile(first_run) and os.path.isfile(second_run):
+    properties = xmlparser()
+    print(properties)
+    logging.info(properties)
+    net_props = createNetworkProps(properties)
+    logging.info(net_props)
+    onapp_props = createOnAppProps(properties)
+    logging.info(onapp_props)
+
+    logging.info(f"Setting hostname to {properties['onapp.fqdn']} ")
+    hname_cmd = f"hostnamectl set-hostname {properties['onapp.fqdn']}"
+    hname_cmd = shlex.split(hname_cmd)
+    print(hname_cmd)
+    hname_set = subprocess.Popen(hname_cmd)
+    hname_set.wait()
+    os.system('touch first-run')
+
+    print("Rebooting")
+
+
+e
+
+# os.system(f"export HOSTNAME={properties['onapp.fqdn']}")
+# print(f"export HOSTNAME={properties['onapp.fqdn']}")
+# time.sleep(1)
+# os.system("service rabbitmq-server restart")
 # Sample Dictionary to change values in Centos 7 network scripts file for interface ens160
 # "/etc/sysconfig/network-scripts/ifcfg-ens160"
 #    my_pattern = {
