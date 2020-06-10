@@ -6,6 +6,14 @@ import subprocess
 import fileinput
 import shlex
 import time
+import logging
+
+logname = "log.txt"
+logging.basicConfig(filename=logname,
+                    filemode='a',
+                    format='%(levelname)%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
 
 
 def xmlparser():
@@ -66,28 +74,35 @@ def changer(file_to_change):
 if os.path.isfile('/root/first-run'):
     os.system('echo "`date` Not RUN" >> /root/first-run')
     os.system('echo "`date` ONAPP TEMPLATE SCRIPT FAILED" | tee /dev/kmsg')
-    print("first-run exists. Exiting!")
+    logging.info("Aborting: first-run file exists!")
 else:
     print("Parsing OVF Properties")
+    logging.info("Parsing OVF Properties")
     properties = xmlparser()
     time.sleep(2)
     print("Changing Hostname")
+    logging.info("Changin Hostname")
     changeHostname = os.system(
         f"nmcli general hostname {properties['onapp.fqdn']}")
     time.sleep(2)
     print("Updating Network Settings")
+    logging.info("Changing Hostname")
     changer("/etc/sysconfig/network-scripts/ifcfg-ens160")
     time.sleep(2)
+    logging.info(
+        "Creating first run file to abort script execution in future!")
     os.system("touch /root/first-run")
     print("Restarting Network")
+    logging.info("Restarting Network")
     os.system("systemctl restart network")
     time.sleep(2)
+    logging.info("Updating OnApp installer")
     cmd = "yum -y update onapp-cp-install"
     newcmd = shlex.split(cmd)
-
-    p1 = subprocess.run(newcmd, stdout=subprocess.PIPE, universal_newlines=True)
+    p1 = subprocess.run(newcmd, stdout=subprocess.PIPE,
+                        universal_newlines=True)
     print(p1.stdout)
-
     os.system('echo "`date` RUN" >> /root/first-run')
     os.system('echo "`date` ONAPP TEMPLATE SCRIPT" | tee /dev/kmsg')
+    logging.info("Script Execution finished. Restarting System")
     # os.system("systemctl reboot")
