@@ -5,7 +5,7 @@
      xmlns:oe="http://schemas.dmtf.org/ovf/environment/1"
      xmlns:ve="http://www.vmware.com/schema/ovfenv"
      oe:id=""
-     ve:vCenterId="vm-412">
+     ve:vCenterId="vm-414">
    <PlatformSection>
       <Kind>VMware ESXi</Kind>
       <Version>6.7.0</Version>
@@ -14,13 +14,14 @@
    </PlatformSection>
    <PropertySection>
          <Property oe:key="onapp.dns" oe:value="1.1.1.1"/>
-         <Property oe:key="onapp.fqdn" oe:value=""/>
-         <Property oe:key="onapp.gw" oe:value=""/>
+         <Property oe:key="onapp.fqdn" oe:value="another2-check.test.lab"/>
+         <Property oe:key="onapp.gw" oe:value="10.10.100.253"/>
          <Property oe:key="onapp.ipaddr" oe:value="10.10.100.35"/>
          <Property oe:key="onapp.netmask" oe:value="255.255.255.0"/>
+         <Property oe:key="onapp.license" oe:value="EEEEE-DDDDD-FFFF-RRR"/>
    </PropertySection>
    <ve:EthernetAdapterSection>
-      <ve:Adapter ve:mac="00:50:56:97:3e:47" ve:network="Public" ve:unitNumber="7"/>
+      <ve:Adapter ve:mac="00:50:56:97:4e:69" ve:network="Public" ve:unitNumber="7"/>
    </ve:EthernetAdapterSection>
 </Environment>
 

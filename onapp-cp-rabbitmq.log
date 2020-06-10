@@ -1,0 +1,60 @@
+
+2020-06-10 18:10 Start configuring RabbiMQ for Control Panel and vCloud
+Get existed configuration of OnApp/vCloud connection to RabbitMQ from /onapp/interface/config/on_app.yml
+Get existed configuration of RabbitMQ management account from /onapp/onapp-rabbitmq/.rabbitmq.mgr
+Configure rabbitmq-server to start at boot time
+Running: systemctl enable rabbitmq-server
+Running: systemctl status rabbitmq-server
+● rabbitmq-server.service - RabbitMQ broker
+   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2020-06-10 18:10:08 BST; 44s ago
+ Main PID: 21087 (beam.smp)
+   Status: "Initialized"
+   CGroup: /system.slice/rabbitmq-server.service
+           ├─21087 /usr/lib64/erlang/erts-10.1.2/bin/beam.smp -W w -A 64 -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -P 1048576 -t 5000000 -stbt db -zdbbl 128000 -K true -- -root /usr/lib64/erlang -progname erl -- -home /var/lib/rabbitmq -- -pa /usr/lib/rabbitmq/lib/rabbitmq_server-3.7.14/ebin  -noshell -noinput -s rabbit boot -sname rabbit@another2-check -boot start_sasl -kernel inet_default_connect_options [{nodelay,true}] -sasl errlog_type error -sasl sasl_error_logger false -rabbit lager_log_root "/var/log/rabbitmq" -rabbit lager_default_file "/var/log/rabbitmq/rabbit@another2-check.log" -rabbit lager_upgrade_file "/var/log/rabbitmq/rabbit@another2-check_upgrade.log" -rabbit enabled_plugins_file "/etc/rabbitmq/enabled_plugins" -rabbit plugins_dir "/usr/lib/rabbitmq/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.7.14/plugins" -rabbit plugins_expand_dir "/var/lib/rabbitmq/mnesia/rabbit@another2-check-plugins-expand" -os_mon start_cpu_sup false -os_mon start_disksup false -os_mon start_memsup false -mnesia dir "/var/lib/rabbitmq/mnesia/rabbit@another2-check" -kernel inet_dist_listen_min 25672 -kernel inet_dist_listen_max 25672
+           ├─21387 erl_child_setup 32768
+           ├─21412 inet_gethost 4
+           └─21413 inet_gethost 4
+
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##  ##
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##  ##      RabbitMQ 3.7.14. Copyright (C) 2007-2019 Pivotal Software, Inc.
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##########  Licensed under the MPL.  See https://www.rabbitmq.com/
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ######  ##
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##########  Logs: /var/log/rabbitmq/rabbit@another2-check.log
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: /var/log/rabbitmq/rabbit@another2-check_upgrade.log
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: Starting broker...
+Jun 10 18:10:08 another2-check.test.lab rabbitmq-server[21087]: systemd unit for activation check: "rabbitmq-server.service"
+Jun 10 18:10:08 another2-check.test.lab systemd[1]: Started RabbitMQ broker.
+Jun 10 18:10:09 another2-check.test.lab rabbitmq-server[21087]: completed with 0 plugins.
+Running: systemctl status rabbitmq-server
+● rabbitmq-server.service - RabbitMQ broker
+   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2020-06-10 18:10:08 BST; 44s ago
+ Main PID: 21087 (beam.smp)
+   Status: "Initialized"
+   CGroup: /system.slice/rabbitmq-server.service
+           ├─21087 /usr/lib64/erlang/erts-10.1.2/bin/beam.smp -W w -A 64 -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -P 1048576 -t 5000000 -stbt db -zdbbl 128000 -K true -- -root /usr/lib64/erlang -progname erl -- -home /var/lib/rabbitmq -- -pa /usr/lib/rabbitmq/lib/rabbitmq_server-3.7.14/ebin  -noshell -noinput -s rabbit boot -sname rabbit@another2-check -boot start_sasl -kernel inet_default_connect_options [{nodelay,true}] -sasl errlog_type error -sasl sasl_error_logger false -rabbit lager_log_root "/var/log/rabbitmq" -rabbit lager_default_file "/var/log/rabbitmq/rabbit@another2-check.log" -rabbit lager_upgrade_file "/var/log/rabbitmq/rabbit@another2-check_upgrade.log" -rabbit enabled_plugins_file "/etc/rabbitmq/enabled_plugins" -rabbit plugins_dir "/usr/lib/rabbitmq/plugins:/usr/lib/rabbitmq/lib/rabbitmq_server-3.7.14/plugins" -rabbit plugins_expand_dir "/var/lib/rabbitmq/mnesia/rabbit@another2-check-plugins-expand" -os_mon start_cpu_sup false -os_mon start_disksup false -os_mon start_memsup false -mnesia dir "/var/lib/rabbitmq/mnesia/rabbit@another2-check" -kernel inet_dist_listen_min 25672 -kernel inet_dist_listen_max 25672
+           ├─21387 erl_child_setup 32768
+           ├─21412 inet_gethost 4
+           └─21413 inet_gethost 4
+
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##  ##
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##  ##      RabbitMQ 3.7.14. Copyright (C) 2007-2019 Pivotal Software, Inc.
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##########  Licensed under the MPL.  See https://www.rabbitmq.com/
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ######  ##
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: ##########  Logs: /var/log/rabbitmq/rabbit@another2-check.log
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: /var/log/rabbitmq/rabbit@another2-check_upgrade.log
+Jun 10 18:10:07 another2-check.test.lab rabbitmq-server[21087]: Starting broker...
+Jun 10 18:10:08 another2-check.test.lab rabbitmq-server[21087]: systemd unit for activation check: "rabbitmq-server.service"
+Jun 10 18:10:08 another2-check.test.lab systemd[1]: Started RabbitMQ broker.
+Jun 10 18:10:09 another2-check.test.lab rabbitmq-server[21087]: completed with 0 plugins.
+Add the 'rbtvcd' user with the password XXXXXXXX
+Add the '/' vhost
+Set configure '.*', read '.*', write '.*' permissions for the 'rbtvcd' user on the '/' vhost
+Add the 'rbtmgr' user with the password XXXXXXXX
+Tag the 'rbtmgr' user as 'administrator'
+Add the '/' vhost
+Set configure '.*', read '.*', write '.*' permissions for the 'rbtmgr' user on the '/' vhost
+The web based management already enabled.
+Try to navigate http://:15672 and use login 'rbtmgr' and password specified in the /onapp/onapp-rabbitmq/.rabbitmq.mgr
+2020-06-10 18:11 Finished configuring RabbiMQ for Control Panel and vCloud

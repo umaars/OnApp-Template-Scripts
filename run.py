@@ -68,7 +68,7 @@ def changer(props,file_to_change):
     for line in fileinput.input(files=(file_to_change), inplace=1):
         for each in mylist:
             if each in line:
-                line = f"{my_pattern[each]}\n"
+                line = f"{props[each]}\n"
             else:
                 line = line
         print(line, end='')
@@ -89,8 +89,12 @@ print(hname_cmd)
 hname_set = subprocess.Popen(hname_cmd)
 hname_set.wait()
 print("finished")
+os.system(f"export HOSTNAME={properties['onapp.fqdn']}")
+print(f"export HOSTNAME={properties['onapp.fqdn']}")
+time.sleep(1)
+os.system("service rabbitmq-server restart")
 rabbitmq_cmd = shlex.split("/onapp/onapp-rabbitmq/onapp-cp-rabbitmq.sh")
-reinstall_rabbitmq = subprocess.Popen(rabbitmq_cmd)
+reinstall_rabbitmq = subprocess.Popen(rabbitmq_cmd,shell=True)
 reinstall_rabbitmq.wait()
 print("reinstalled_rabbitmq")
 

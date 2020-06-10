@@ -1,0 +1,9 @@
+---
+allow_incremental_backups: true
+use_html5_vnc_console: true
+max_upload_size: 0
+rabbitmq_login: 'rbtvcd'
+rabbitmq_password: '8dbbccaf9ce6141ece55'
+rabbitmq_vhost: '/'
+rabbitmq_host: '127.0.0.1'
+license_key: ''

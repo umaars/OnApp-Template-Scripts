@@ -1,1 +1,105 @@
-OnApp Log file
+OnApp Log fileINFO 14:33:42,654 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 14:33:42,655 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 14:33:42,655 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 14:35:28,314 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 14:35:28,315 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 14:35:28,315 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:50:49,414 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:50:49,415 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 15:50:49,415 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:53:29,983 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:53:29,984 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 15:53:29,984 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:53:29,984 root INFO Setting hostname to firstrun-check.test.lab 
+INFO 15:55:21,676 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:55:21,677 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 15:55:21,677 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:55:21,677 root INFO Setting hostname to firstrun-check.test.lab 
+INFO 15:56:24,900 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'firstrun-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:56:24,901 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 15:56:24,901 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:56:24,901 root INFO Setting hostname to firstrun-check.test.lab 
+INFO 15:56:49,813 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:56:49,814 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 15:56:49,814 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 15:56:49,814 root INFO Setting hostname to refactor-check.test.lab 
+INFO 16:00:52,636 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:00:52,636 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:00:52,636 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:00:52,636 root INFO Setting hostname to refactor-check.test.lab 
+INFO 16:02:04,81 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:02:04,81 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:02:04,82 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:02:04,82 root INFO Setting hostname to refactor-check.test.lab 
+INFO 16:10:36,956 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': '2refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:10:36,956 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:10:36,956 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:10:36,956 root INFO Setting hostname to 2refactor-check.test.lab 
+INFO 16:11:42,724 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': '2refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:11:42,724 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:11:42,725 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:11:42,725 root INFO Setting hostname to 2refactor-check.test.lab 
+INFO 16:12:14,687 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': '2refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:12:14,687 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:12:14,687 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:12:14,687 root INFO Setting hostname to 2refactor-check.test.lab 
+INFO 16:12:57,236 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': '2refactor-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:12:57,237 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:12:57,237 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:12:57,237 root INFO Setting hostname to 2refactor-check.test.lab 
+INFO 16:14:10,894 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'gggg-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:14:10,894 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:14:10,895 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:14:10,895 root INFO Setting hostname to gggg-check.test.lab 
+INFO 16:14:46,886 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'gggg-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:14:46,886 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:14:46,886 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:14:46,887 root INFO Setting hostname to gggg-check.test.lab 
+INFO 16:15:09,312 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'gggg-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:15:09,312 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:15:09,312 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:15:09,312 root INFO Setting hostname to gggg-check.test.lab 
+INFO 16:24:45,351 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'gggg-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:24:45,352 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:24:45,352 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:24:45,352 root INFO Setting hostname to gggg-check.test.lab 
+INFO 16:27:37,683 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'qqqqqq-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:27:37,683 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:27:37,683 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:27:37,683 root INFO Setting hostname to qqqqqq-check.test.lab 
+INFO 16:46:20,253 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'uuuu-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:46:20,254 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:46:20,254 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:46:20,254 root INFO Setting hostname to uuuu-check.test.lab 
+INFO 16:53:07,148 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'xxxxxxx-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:53:07,148 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:53:07,148 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:53:07,148 root INFO Setting hostname to xxxxxxx-check.test.lab 
+INFO 16:57:19,965 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'asdfasdfasfd-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:57:19,965 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 16:57:19,965 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 16:57:19,965 root INFO Setting hostname to asdfasdfasfd-check.test.lab 
+INFO 17:43:05,330 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'xyxyxyxyxy-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 17:43:05,331 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 17:43:05,331 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 17:43:05,331 root INFO Setting hostname to xyxyxyxyxy-check.test.lab 
+INFO 18:04:21,299 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'another-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:04:21,303 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 18:04:21,303 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:04:21,303 root INFO Setting hostname to another-check.test.lab 
+INFO 18:06:03,890 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'another-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:06:03,891 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 18:06:03,891 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:06:03,891 root INFO Setting hostname to another-check.test.lab 
+INFO 18:06:34,861 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'another-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:06:34,862 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 18:06:34,862 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:06:34,862 root INFO Setting hostname to another-check.test.lab 
+INFO 18:08:16,671 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'another-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:08:16,672 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 18:08:16,672 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:08:16,672 root INFO Setting hostname to another-check.test.lab 
+INFO 18:10:00,683 root INFO {'onapp.dns': '1.1.1.1', 'onapp.fqdn': 'another2-check.test.lab', 'onapp.gw': '10.10.100.253', 'onapp.ipaddr': '10.10.100.35', 'onapp.netmask': '255.255.255.0', 'onapp.license': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:10:00,683 root INFO {'BOOTPROTO': 'BOOTPROTO=static', 'NETMASK=': 'NETMASK=255.255.255.0', 'IPADDR=': 'IPADDR=10.10.100.35', 'GATEWAY=': 'GATEWAY=10.10.100.253', 'DNS1=': 'DNS1=1.1.1.1'}
+INFO 18:10:00,683 root INFO {'license_key': 'EEEEE-DDDDD-FFFF-RRR'}
+INFO 18:10:00,683 root INFO Setting hostname to another2-check.test.lab 
