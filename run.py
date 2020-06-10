@@ -8,6 +8,9 @@ import shlex
 import time
 import logging
 
+
+# Added Logging
+
 logname = "log.txt"
 logging.basicConfig(filename=logname,
                     filemode='a',
