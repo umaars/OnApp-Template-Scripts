@@ -11,7 +11,7 @@ import logging
 logname = "log.txt"
 logging.basicConfig(filename=logname,
                     filemode='a',
-                    format='%(levelname)s,%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    format='%(levelname)s %(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
                     level=logging.DEBUG)
 
